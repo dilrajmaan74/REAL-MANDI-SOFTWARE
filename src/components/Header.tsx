@@ -54,7 +54,7 @@ export const Header: React.FC<HeaderProps> = ({
   ];
 
   return (
-    <header className="bg-emerald-950 text-white border-b border-emerald-800 shadow-md sticky top-0 z-40">
+    <header className="print:hidden bg-emerald-950 text-white border-b border-emerald-800 shadow-md sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           

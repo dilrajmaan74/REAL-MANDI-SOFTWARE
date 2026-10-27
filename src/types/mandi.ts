@@ -303,3 +303,34 @@ export interface GoogleSheetConfig {
   spreadsheetUrl: string;
   connectedAt: string;
 }
+
+export interface LetterPadDocument {
+  id: string;
+  ref_no: string;
+  date: string;
+  firm_mode: 'dual' | 'firm1' | 'firm2';
+  firm1_name: string;
+  firm1_lic: string;
+  firm1_pan: string;
+  firm1_mobile: string;
+  firm1_proprietor: string;
+  firm2_name: string;
+  firm2_lic: string;
+  firm2_pan: string;
+  firm2_mobile: string;
+  firm2_proprietor: string;
+  mandi_address: string;
+  recipient_title: string;
+  recipient_name: string;
+  recipient_address: string;
+  subject: string;
+  salutation: string;
+  body_paragraphs: string[];
+  closing: string;
+  signatory1_title: string;
+  signatory2_title: string;
+  show_watermark: boolean;
+  notes_footer?: string;
+  created_at: string;
+}
+

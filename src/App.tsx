@@ -12,6 +12,7 @@ import { CropArrivalModule } from './components/CropArrivalModule';
 import { BardanaModule } from './components/BardanaModule';
 import { AgencyPurchaseModule } from './components/AgencyPurchaseModule';
 import { LiftingDispatchModule } from './components/LiftingDispatchModule';
+import { LetterPadModule } from './components/LetterPadModule';
 import { VoiceTextInputStudio } from './components/VoiceTextInputStudio';
 import { TransactionEditor } from './components/TransactionEditor';
 import { JFormModal } from './components/JFormModal';
@@ -58,6 +59,7 @@ import {
   Building2, 
   Truck, 
   Sparkles,
+  FileText,
   CheckCircle,
   AlertCircle,
   Info,
@@ -328,7 +330,7 @@ const INITIAL_DEMO_LIFTING: LiftingDispatchEntry[] = [
 export default function App() {
   // Active Module Navigation Tab
   const [activeModule, setActiveModule] = useState<
-    'farmers' | 'arrivals' | 'bardana' | 'agency' | 'lifting' | 'ai_assistant'
+    'farmers' | 'arrivals' | 'bardana' | 'agency' | 'lifting' | 'letterpad' | 'ai_assistant'
   >('farmers');
 
   // Authentication
@@ -888,11 +890,11 @@ export default function App() {
       />
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 print:p-0 print:m-0 print:max-w-none print:space-y-0">
         
         {/* Device Sync Info & Laptop Data Migration Banner */}
         {user && hasLocalDataToUpload && (
-          <div className="bg-gradient-to-r from-amber-50 to-emerald-50 border-2 border-amber-300 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
+          <div className="print:hidden bg-gradient-to-r from-amber-50 to-emerald-50 border-2 border-amber-300 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
             <div className="flex items-center gap-3">
               <div className="p-2.5 bg-amber-100 rounded-xl text-amber-800 flex-shrink-0">
                 <CloudUpload className="w-5 h-5" />
@@ -930,7 +932,7 @@ export default function App() {
         )}
 
         {/* 5 Distinct Module Tabs Bar */}
-        <div className="bg-white rounded-2xl shadow-xs border border-gray-200 p-2 overflow-x-auto">
+        <div className="print:hidden bg-white rounded-2xl shadow-xs border border-gray-200 p-2 overflow-x-auto">
           <div className="flex items-center gap-1.5 min-w-max">
             
             {/* Module 1: Farmer Register */}
@@ -1169,6 +1171,15 @@ export default function App() {
             token={token}
             sheetConfig={sheetConfig}
             onOpenSheetModal={() => setIsSheetModalOpen(true)}
+          />
+        )}
+
+        {/* 6. SEPARATE MODULE: Letter Pad (ਲੈਟਰ ਪੈਡ - ਦੋਵੇਂ ਫਰਮਾਂ) */}
+        {activeModule === 'letterpad' && (
+          <LetterPadModule
+            registeredFarmers={farmers}
+            currentMandi={currentMandi}
+            onToast={showToast}
           />
         )}
 
